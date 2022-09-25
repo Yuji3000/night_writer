@@ -2,46 +2,45 @@ require_relative 'braille'
 
 class EnglishTranslator
   include Braille
-  # attr_reader :single_letter
-  # def initialize
-  #   @single_letter = ""
-  # end
-  # def single_letter(incoming_text)
-  #   require 'pry'; binding.pry
-  #   single_string = ""
-  #   incoming_text.each_char do |char| 
-  #     single_string.concat "#{char}"
-  #   end
-  #   single_string
-  # end
 
-  def writer(incoming_text)
+  def to_braille(incoming_text)
     braille_array = []
-    braille = incoming_text.each_char do |char| 
+    incoming_text.each_char do |char| 
       braille_array << @braille_alphabet[char]
     end
-    braille_array.each do |letters|
-      letters.each do |letter|
-        puts letter
-        # require 'pry'; binding.pry
-        
-      end
-    end
+    braille_array
   end
 
+  def writer(incoming_text)
+    brailler = to_braille(incoming_text)
+    row_1 = []
+    row_2 = []
+    row_3 = []
+    brailler.each do |letters| 
+        row_1 << letters[0].to_s
+        row_2 << letters[1]
+        row_3 << letters[2]
+      end
+      # letter_row = []
+      # #will take count of rows / 80. round up for row length
+      # row_lengths = row_1.count.to_f / 80.ceil 
+      # row_lengths.times do |index|
+      # #do block
+      #   letter_row << row_1 using index find first 80 characters
+      #   letter_row << "\n"
+      # end
+      #   #row_3
+      #   #row_3
+      
+
+      # #index keeps track of which iteration im on
+      
 
 
-  # def writer(incoming_text)
-  #   b_array = @braille_alphabet[incoming_text]
-    
-  #   row_1 = b_array[0]
-  #   row_2 = b_array[1]
-  #   row_3 = b_array[2]
-  #   single_letter = "#{row_1}\n#{row_2}\n#{row_3}"
-  #   return single_letter
-   
-    
-  # end
+      return_braille = "#{row_1.join}\n#{row_2.join}\n#{row_3.join}"
+    # if row_1.length > 79 && row_2.length > 79 && row_3.length > 79
+      return_braille
+  end
 end
 
 
