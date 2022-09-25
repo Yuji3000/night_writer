@@ -5,21 +5,34 @@ describe EnglishTranslator do
   it 'exists' do
     braille_printer = EnglishTranslator.new
     expect(braille_printer).to be_an_instance_of(EnglishTranslator)
-    # expect(braille_printer.single_letter).to eq("")
   end
+
   it 'can turn input file text to individual letter strings' do
     braille_printer = EnglishTranslator.new
     incoming_file = File.open('./tester.txt', "r")
-    expect(braille_printer.single_letter(incoming_file)).to eq("y""i")
+    expect(braille_printer.to_braille(incoming_file)).to eq([["0.", "00", ".."],
+      ["0.", ".0", ".."],
+      ["0.", "0.", "0."],
+      ["0.", "0.", "0."],
+      ["0.", ".0", "0."],
+      ["..", "..", ".."],
+      [".0", "00", ".0"],
+      ["0.", ".0", "0."],
+      ["0.", "00", "0."],
+      ["0.", "0.", "0."],
+      ["00", ".0", ".."]])
   end
-  xit 'can change english to braille alphabet hash key' do
+
+  it 'can change braille array to braille' do
     braille_printer = EnglishTranslator.new
-    incoming_text = File.open('./tester.txt', "r")
-    expect(braille_printer.writer("a")).to eq(["0.", "..", ".."])
+    incoming_file = File.open('./tester.txt', "r")
+    expect(braille_printer.writer(incoming_file)).to eq("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0..."
+    )
   end
-  # it 'can take word and turn it into individual one letter strings' do
+
+  # it 'can make a new line after 80 spaces' do
+  #   braille_printer = EnglishTranslator.new
 
   # end
 end
 
-# @single_letter = "#{row_1.join}/n#{row_2.join}/n#{row_3.join}/n"
