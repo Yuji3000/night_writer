@@ -1,4 +1,5 @@
 require 'rspec'
+require 'spec_helper'
 require './lib/english_translator'
 
 describe EnglishTranslator do
@@ -32,6 +33,6 @@ describe EnglishTranslator do
   it 'can turn braille arrays into a single line' do
     english_translator = EnglishTranslator.new
     expected = "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n"
-    expect(english_translator.translate_to_braille('hello world')).to eq(expected)
+    expect(english_translator.organize_braille('hello world')).to eq(expected)
   end
 end
