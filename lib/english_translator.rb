@@ -2,7 +2,9 @@ require_relative 'braille'
 
 class EnglishTranslator
   include Braille
-  attr_reader :row_1, :row_2, :row_3
+  attr_reader :row_1,
+              :row_2,
+              :row_3
   def initialize
     @row_1 = []
     @row_2 = []
