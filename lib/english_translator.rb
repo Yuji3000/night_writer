@@ -21,7 +21,7 @@ class EnglishTranslator
     input_array
   end
 
-  def translate_to_braille(input_string)
+  def organize_braille(input_string)
     letters = convert_to_arrays(input_string).reject(&:nil?)
     row_1 = []
     row_2 = []
@@ -44,7 +44,6 @@ class EnglishTranslator
       return_braille << row_chunk3[i].join
       return_braille << "\n"
       break if i == (row_chunk1.length - 1)
-
       i += 1
     end
     return_braille
