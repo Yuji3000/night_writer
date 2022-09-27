@@ -32,6 +32,7 @@ class BrailleTranslator
   def translate(string)
     separate_braille_in_3_lines(string)
     slice_all_lines(@top_row, @middle_row, @bottom_row)
+    
     i = 0
     translation = ''
     loop do
@@ -40,8 +41,8 @@ class BrailleTranslator
       bottom_chunk = @bottom_row[i]
       translation_array = [top_chunk, middle_chunk, bottom_chunk]
       translation << BRAILLE_ALPHABET.key(translation_array)
+      # require 'pry'; binding.pry
       break if i == @top_row.length - 1
-
       i += 1
     end
     translation

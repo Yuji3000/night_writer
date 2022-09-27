@@ -1,5 +1,6 @@
 require 'rspec'
 require './lib/braille_translator'
+require 'spec_helper'
 
 describe BrailleTranslator do
   it 'exists' do
@@ -18,13 +19,13 @@ describe BrailleTranslator do
 
   it 'can split braille lines by twos in an array' do
     braille_translator = BrailleTranslator.new
-    string = '0.0.0.0.0.' # top row of "hello"
+    string = '0.0.0.0.0.' 
     expect(braille_translator.slice_braille_in_twos(string)).to eq(['0.', '0.', '0.', '0.', '0.'])
   end
 
   it 'can split 3 braille lines by two' do
     english_printer = BrailleTranslator.new
-    top = '0.0.0.0.0.'
+    top = '0.0.0.0.0.' 
     middle = '00.00.0..0'
     bottom = '....0.0.0.'
     english_printer.slice_all_lines(top, middle, bottom)
@@ -35,7 +36,7 @@ describe BrailleTranslator do
 
   it 'can translate braille' do
     english_printer = BrailleTranslator.new
-    string = "0.0.0.0.0.\n00.00.0..0\n....0.0.0.\n" # hello
+    string = "0.0.0.0.0.\n00.00.0..0\n....0.0.0.\n"
     expect(english_printer.translate(string)).to eq('hello')
   end
 end
