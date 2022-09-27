@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require './lib/english_translator'
 
 english_translator = EnglishTranslator.new
