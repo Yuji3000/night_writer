@@ -58,31 +58,3 @@ class EnglishTranslator
     return_braille
   end
 end
-
-# def organize_braille(input_string)
-#   letters = convert_to_arrays(input_string).reject(&:nil?)
-#   row_1 = []
-#   row_2 = []
-#   row_3 = []
-#   letters.each do |letter|
-#     row_1 << letter[0]
-#     row_2 << letter[1]
-#     row_3 << letter[2]
-#   end
-#   row_chunk1 = row_1.each_slice(40).to_a
-#   row_chunk2 = row_2.each_slice(40).to_a
-#   row_chunk3 = row_3.each_slice(40).to_a
-#   return_braille = ''
-#   i = 0
-#   loop do
-#     return_braille << row_chunk1[i].join
-#     return_braille << "\n"
-#     return_braille << row_chunk2[i].join
-#     return_braille << "\n"
-#     return_braille << row_chunk3[i].join
-#     return_braille << "\n"
-#     break if i == (row_chunk1.length - 1)
-#     i += 1
-#   end
-#   return_braille
-# end
