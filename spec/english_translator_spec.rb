@@ -6,14 +6,10 @@ describe EnglishTranslator do
   it 'exists' do
     english_translator = EnglishTranslator.new
     expect(english_translator).to be_an_instance_of(EnglishTranslator)
-    expect(english_translator.row_1).to eq([])
-    expect(english_translator.row_2).to eq([])
-    expect(english_translator.row_3).to eq([])
   end
 
   it 'has attributes' do
     english_translator = EnglishTranslator.new
-    expect(english_translator).to be_an_instance_of(EnglishTranslator)
     expect(english_translator.row_1).to eq([])
     expect(english_translator.row_2).to eq([])
     expect(english_translator.row_3).to eq([])
@@ -43,12 +39,10 @@ describe EnglishTranslator do
 
   it 'can convert braille arrays into rows' do
     english_translator = EnglishTranslator.new
-    input_string = [['0.', '00', '..'],
-    ['0.', '.0', '..'],
-    ['0.', '0.', '0.']]
-    expect(english_translator.row_1).to eq(['0.', '0.', '0.'])
-    expect(english_translator.row_2).to eq(['00', '.0', '0.'])
-    expect(english_translator.row_3).to eq(['..', '..', '0.'])
+    english_translator.braille_to_rows('hello world')
+    expect(english_translator.row_1).to eq(['0.', '0.', '0.', '0.', '0.', '..', '.0', '0.', '0.', '0.', '00'])
+    expect(english_translator.row_2).to eq(['00', '.0', '0.', '0.', '.0', '..', '00', '.0', '00', '0.', '.0'])
+    expect(english_translator.row_3).to eq(['..', '..', '0.', '0.', '0.', '..', '.0', '0.', '0.', '0.', '..'])
   end
 
   it 'can turn braille arrays into a single string' do

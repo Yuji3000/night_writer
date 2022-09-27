@@ -2,6 +2,7 @@ require_relative 'braille'
 
 class EnglishTranslator
   include Braille
+  attr_reader :row_1, :row_2, :row_3
   def initialize
     @row_1 = []
     @row_2 = []
@@ -28,9 +29,6 @@ class EnglishTranslator
 
   def braille_to_rows(input_string)
     letters = convert_to_arrays(input_string).reject(&:nil?)
-    # row_1 = []
-    # row_2 = []
-    # row_3 = []
     letters.each do |letter|
       @row_1 << letter[0]
       @row_2 << letter[1]
@@ -38,8 +36,8 @@ class EnglishTranslator
     end
   end
 
-  def organize_braille_1(input_string)
-    organize_braille(input_string)
+  def organize_braille(input_string)
+    braille_to_rows(input_string)
     row_chunk1 = @row_1.each_slice(40).to_a
     row_chunk2 = @row_2.each_slice(40).to_a
     row_chunk3 = @row_3.each_slice(40).to_a
